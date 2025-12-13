@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="BusPass.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+  
+  <h2>TELANGANA STATE ROAD TRANSPORT CORPORATION</h2>
+  <H1>STUDENT BUS PASS APPLICATION ABOVE SSC</H1>
+  <span class="material-symbols-outlined">
+      settings
+  </span>
+  <i class="fa-duotone fa-regular fa-circle-trash"></i>
+  <br />
+  <br />
+  <p>Note: 1.TGSRTC officers has reserve right to cancel Registration, ID and Ticket at any point of time.
+2.Students are requested to Upload Passport size photograph only. Otherwise, TGSRTC officers
+reserve right to cancel your registration without notice.</p>
+  <br />
+  <br />
+  <DIV class="box">1.Student 10th Details</DIV>
+  <div id="table1">
+    <label for="ssc">1.1 SSC Board Type:</label>
+    <select name="ssc" id="ssc">
+      <option value="select">--select--</option>
+      <option value="ssc">SSC</option>
+      <option value="icse">ICSE</option>
+      <option value="cbse">CBSE</option>
+    </select>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <label for="sscR">1.2 SSC Regular/Supplementary:</label>
+    <select name="sscR" id="sscR">
+      <option value="select">--select--</option>
+      <option value="regular">Regular</option>
+      <option value="supplementary">Supplementary</option>
+    </select>
+    <br>
+    <label for="passY">1.3 SSC Year of Pass:</label>
+    <input type="text" id="passY" name="passY" />
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <label for="hallT">1.4 SSC Hall Ticket Number:</label>
+    <input type="text" id="hallT" name="hallT" />
+    <br>
+    <label for="dob">1.5 Date of Birth:</label>
+    <input type="date" id="dob" name="dob" />
+  </div>
+  <br />
+  <br />
+  <DIV class="box">2.Student Details</DIV>
+  <div id="table2">
+    <label for="sname">2.1 Name:</label>
+    <input type="text" id="sname" name="sname" />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <label for="fname">2.2 Father Name:</label>
+    <input type="text" id="fname" name="fname" />
+    <br />
+    <label for="mname">2.3 Date of birth:</label>
+    <input type="date" id="mname" name="mname" />
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <label for="gender">2.4 Gender:</label>
+    <input type="radio" name="gender" id="male">
+    <label for="male">Male</label>
+    <input type="radio" name="gender" id="female">
+    <label for="female">Female</label>
+    <input type="radio" name="gender" id="other">
+    <label for="other">Other</label>
+    <br />
+    <label for="aadhar">2.5 Aadhar Number:</label>
+    <input type="text" id="aadhar" name="aadhar" />
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <label for="mobile">2.6 Mobile Number:</label>
+    <input type="text" id="mobile" name="mobile" />
+    <br />
+    
+    <label for="employee">2.7 Is Employee Chilldren:</label>
+    <input type="radio" name="employee" id="yes">
+    <label for="yes">Yes</label>
+    <input type="radio" name="employee" id="no">
+    <label for="no">No</label>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <label for="email">2.8 Email:</label>
+    <input type="email" id="email" name="email" />
+    <br />
+    <label for="file">2.9 Photo:</label>
+    <input type="file" id="file" name="file" />
+  </div>
+  <br />
+  <br />
+  <DIV class="box">3.Residential Address Details</DIV>
+  <div id="table3">
+    <label for="district">3.1 District:</label>
+    <select name="district" id="district">
+      <option value="one">Hyderabad</option>
+    </select>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <label for="mandal">3.2 Mandal:</label>
+    <select name="mandal" id="mandal">
+      <option value="one">Hyderabad</option>
+    </select>
+    <br />
+    <label for="village">3.3 Village:</label>
+    <select name="village" id="village">
+      <option value="one">Hyderabad</option>
+    </select>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <label for="address">3.4 Pincode:</label>
+    <input type="text" id="address" name="address" />
+    <br />
+    <label for="pincode">3.5 Full Address:</label>
+    <input type="text" id="pincode" name="pincode" />
+  </div>
+  <br />
+  <br />
+  <DIV class="box">4.Institution Details</DIV>
+  <div id="table4">
+    <label for="Idistrict">4.1 District:</label>
+    <select name="Idistrict" id="Idistrict">
+      <option value="one">Hyderabad</option>
+    </select>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <label for="Imandal">4.2 Mandal:</label>
+    <select name="Imandal" id="Imandal">
+      <option value="one">Hyderabad</option>
+    </select>
+    <br />
+    <label for="Iname">4.3 Institution Name:</label>
+    <select name="Iname" id="Iname">
+      <option value="one">Institution 1</option>
+    </select>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <label for="Cname">4.4 Course Name:</label>
+    <select name="Cname" id="Cname">
+      <option value="one">Course 1</option>
+    </select>
+    <br />
+    <label for="Ano">4.5 Admission Number:</label>
+    <input type="text" id="Ano" name="Ano" />
+    <br />
+    <label for="Iaddress">4.6 Institution Address:</label>
+    <textarea name="Iaddress" id="Iaddress" rows="4"></textarea>
+  </div>
+  <br />
+  <br />
+  <div class="box">5.Mode of Payment</div>
+  <div id="table5">
+    <label for="Pmode">Payment Mode:</label>
+    <select name="Pmode" id="Pmode">
+      <option value="one">Payment at counter</option>
+      <option value="two">Payment online</option>
+    </select>
+  </div>
+  <br />
+  <br />
+  <div class="box">6.Route Details </div>
+  <div id="table6">
+    <label for="center">6.1 Select Center</label>
+    <select name="center" id="center">
+      <option value="one">Center 1</option>
+      <option value="two">Center 2</option>
+    </select>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <label for="passT">6.2 Pass Type Required:</label>
+    <select name="passT" id="passT">
+      <option value="one">Monthly</option>
+      <option value="two">Quarterly</option>
+      <option value="three">Half Yearly</option>
+      <option value="four">Yearly</option>
+    </select>
+  </div>
+  <br />
+  <br />
+  <button type="submit">Submit</button>
+
+</body>
+</html>

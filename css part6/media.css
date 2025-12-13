@@ -1,0 +1,15 @@
+h1{
+    background-color: yellow;
+    border: 2px solid red;
+}
+@media (width: 600px) {
+    h1 {
+        background-color: lightblue;
+        border: 2px solid green;
+    }
+    div{
+        height: 100px;
+        width: 100px;
+        background-color: orange;
+    }
+}

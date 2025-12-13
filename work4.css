@@ -1,0 +1,13 @@
+.grid-container {
+    width: 600px;
+    height: 300px;
+    background-color: lightgray;
+    display: grid;
+}
+.item{
+    width: 100px;
+    height: 50px;
+    background-color: coral;
+    border: 2px solid black;
+    text-align: center;
+}
