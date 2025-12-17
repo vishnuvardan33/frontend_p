@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h1>Book Inventory</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Category</th>
+                <th>Status</th>
+                <th>Rate</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="read">
+                <td>The Great Gatsby</td>
+                <td>F. Scott Fitzgerald</td>
+                <td>Fiction</td>
+                <td><span class="status">Read</span></td>
+                <td><span class="rate one"><span></span><span></span><span></span></span></td>
+            </tr>
+            <tr class="to-read">
+                <td>To Kill a Mockingbird</td>
+                <td>Harper Lee</td>
+                <td>Fiction</td>
+                <td><span class="status">To Read</span></td>
+                <td><span class="rate"><span></span><span></span><span></span></span></td>
+            </tr>
+            <tr class="in-progress">
+                <td>1984</td>
+                <td>George Orwell</td>
+                <td>Dystopian</td>
+                <td><span class="status">In Progress</span></td>
+                <td><span class="rate"><span></span><span></span><span></span></span></td>
+            </tr>
+            <tr class="read">
+                <td>Pride and Prejudice</td>
+                <td>Jane Austen</td>
+                <td>Romance</td>
+                <td><span class="status">Read</span></td>
+                <td><span class="rate two"><span></span><span></span><span></span></span></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <style>
+        span {
+            display: inline-block;
+        }
+
+        tr[class="read"] {
+            background-image: linear-gradient(90deg, #e8f5e9, #c8e6c9);
+        }
+
+        tr[class="to-read"] {
+            background-image: linear-gradient(90deg, #fff3e0, #ffe0b2);
+        }
+
+        tr[class="in-progress"] {
+            background-image: linear-gradient(90deg, #e3f2fd, #bbdefb);
+        }
+
+        tr[class="to-read"] span[class="status"] {
+            border: 2px solid #ff9800;
+            background-image: linear-gradient(90deg, #fff8e1, #ffecb3);
+        }
+
+        tr[class="read"] span[class="status"] {
+            border: 2px solid #4caf50;
+            background-image: linear-gradient(90deg, #f1f8e9, #dcedc8);
+        }
+
+        tr[class="in-progress"] span[class="status"] {
+            border: 2px solid #2196f3;
+            background-image: linear-gradient(90deg, #e8eaf6, #c5cae9);
+        }
+
+        span[class="status"],
+        span[class^="rate"] {
+            height: 24px;
+            width: auto;
+            padding: 4px 8px;
+        }
+
+        span[class^="rate"] > span {
+            border: 1px solid #999;
+            border-radius: 50%;
+            margin: 2px;
+            height: 16px;
+            width: 16px;
+            background-color: #f0f0f0;
+        }
+
+        span[class*="one"] > span:first-child {
+            background-image: linear-gradient(135deg, #ffeb3b, #fdd835);
+        }
+
+        span[class*="two"] > span:nth-child(-n + 2) {
+            background-image: linear-gradient(135deg, #ffeb3b, #fdd835);
+        }
+
+        span[class*="three"] > span {
+            background-image: linear-gradient(135deg, #ffeb3b, #fdd835);
+        }
+    </style>
+</body>
+</html>
