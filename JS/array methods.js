@@ -1,5 +1,5 @@
 //array methods
-let fruits = ['apple', 'banana', 'cherry'];
+let fruits = ['apple', 'banana', 'cherry','MANGO'];
 fruits.push('date'); // adds 'date' to the end
 console.log(fruits); // ['apple', 'banana', 'cherry', 'date']
 fruits.pop(); // removes the last element
@@ -9,6 +9,7 @@ console.log(fruits); // ['banana', 'cherry']
 fruits.unshift('apricot'); // adds 'apricot' to the beginning
 console.log(fruits); // ['apricot', 'banana', 'cherry']
 
+// udtyrts
 //object manipulation
 let person = { name: 'John', age: 30 };
 person.city = 'New York'; // adds a new property
