@@ -14,5 +14,6 @@ int main()
     }
 
     printf("Sum = %.2f\n", sum);
+    printf("Square root of Sum = %.2f\n", sqrt(sum));
     return 0;
 }
