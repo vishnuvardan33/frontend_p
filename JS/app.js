@@ -1,17 +1,21 @@
-
-// js part 6 question 1
-let a = [1,2,3,4,5,6,7,8,9,10];
-let num = 6;
-
-function getarray(a,num){
-    for(let i=0; i<a.length; i++){
-        if(a[i]>=num){
-            console.log(a[i]);
+const calculator = {
+    add: function(a, b) {
+        return a + b;   
+    },
+    subtract: function(a, b) {
+        return a - b;   
+    },
+    multiply: function(a, b) {
+        return a * b;   
+    },
+    divide: function(a, b) {
+        if (b === 0) {
+            throw new Error("Division by zero is not allowed.");
         }
+        return a / b;
     }
-}
-getarray(a,num);
-
-
-//js part 6 question 2
-console.log("Vishnu ");
+};
+console.log("Addition: ", calculator.add(5, 3));         // Output: 8
+console.log("Subtraction: ", calculator.subtract(5, 3)); // Output: 2       
+console.log("Multiplication: ", calculator.multiply(5, 3)); // Output: 15
+console.log("Division: ", calculator.divide(10, 2)); // Output: 5
