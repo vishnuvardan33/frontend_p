@@ -9,4 +9,3 @@ const sum = (a,b) => {
 const cube = x => x*x*x;
 console.log(cube(x));
 
-
