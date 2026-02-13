@@ -7,4 +7,4 @@ let intervalId = setInterval(() => {
         clearInterval(intervalId);
         console.log("stoped the interval");
     }
-}, 1000);
+}, 6000);
