@@ -6,4 +6,4 @@ let sum = arr.reduce((acc, el) => acc + el,0);
 console.log("The sum of the array is :",sum);
 
 let avg = sum / arr.length;
-console.log("The average of the array is :",avg);
+console.log("The average of the array is :",avg);//The average of the array is : 3
