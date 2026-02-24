@@ -1,7 +1,9 @@
 let smallImages = document.getElementsByClassName("images");
 for (let i = 0; i < smallImages.length; i++) {
-    smallImages[i].addEventListener("click", function () {
-        let bigImage = document.getElementById("big-image");
-        bigImage.src = this.src;
-    });
+    
+    let oldImg = smallImages[i].getElementsByClassName("oldImg");
+    oldImg[i].src = "spiderman.png";
+   
+    console.log(`value of image no. ${i} is changed to spiderman`);
 }
+        

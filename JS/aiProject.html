@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Chatbot Assistant</title>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .chatbot-container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            height: 80vh;
+            max-height: 700px;
+        }
+
+        .chatbot-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 12px 12px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-title h1 {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .header-title p {
+            font-size: 12px;
+            opacity: 0.9;
+        }
+
+        .messages-container {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .message {
+            display: flex;
+            gap: 10px;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .message.user {
+            justify-content: flex-end;
+        }
+
+        .message-content {
+            max-width: 70%;
+            padding: 12px 16px;
+            border-radius: 12px;
+            word-wrap: break-word;
+            line-height: 1.4;
+        }
+
+        .message.user .message-content {
+            background: #667eea;
+            color: white;
+            border-bottom-right-radius: 4px;
+        }
+
+        .message.bot .message-content {
+            background: #f0f0f0;
+            color: #333;
+            border-bottom-left-radius: 4px;
+        }
+
+        .input-area {
+            padding: 20px;
+            border-top: 1px solid #eee;
+            display: flex;
+            gap: 10px;
+        }
+
+        input[type="text"] {
+            flex: 1;
+            padding: 12px 16px;
+            border: 1px solid #ddd;
+            border-radius: 24px;
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus {
+            border-color: #667eea;
+        }
+
+        button {
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 24px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: transform 0.2s;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+
+        .typing-indicator {
+            display: flex;
+            gap: 4px;
+            padding: 12px 16px;
+        }
+
+        .typing-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #999;
+            animation: typing 1.4s infinite;
+        }
+
+        .typing-dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .typing-dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes typing {
+            0%, 60%, 100% {
+                opacity: 0.5;
+                transform: translateY(0);
+            }
+            30% {
+                opacity: 1;
+                transform: translateY(-10px);
+            }
+        }
+
+        .messages-container::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .messages-container::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        .messages-container::-webkit-scrollbar-thumb {
+            background: #667eea;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="chatbot-container">
+        <div class="chatbot-header">
+            <div class="header-title">
+                <h1>AI Assistant</h1>
+                <p>Online • Ready to help</p>
+            </div>
+        </div>
+
+        <div class="messages-container" id="messagesContainer">
+            <div class="message bot">
+                <div class="message-content">
+                    Hello! 👋 I'm your AI assistant. How can I help you today?
+                </div>
+            </div>
+        </div>
+
+        <div class="input-area">
+            <input 
+                type="text" 
+                id="userInput" 
+                placeholder="Type your message..." 
+                autocomplete="off"
+            >
+            <button id="sendBtn">Send</button>
+        </div>
+    </div>
+
+    <script>
+        const messagesContainer = document.getElementById('messagesContainer');
+        const userInput = document.getElementById('userInput');
+        const sendBtn = document.getElementById('sendBtn');
+
+        function addMessage(text, isUser) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${isUser ? 'user' : 'bot'}`;
+            messageDiv.innerHTML = `<div class="message-content">${text}</div>`;
+            messagesContainer.appendChild(messageDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function showTypingIndicator() {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'message bot';
+            messageDiv.id = 'typing-indicator';
+            messageDiv.innerHTML = `
+                <div class="typing-indicator">
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                </div>
+            `;
+            messagesContainer.appendChild(messageDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        async function sendMessage() {
+            const message = userInput.value.trim();
+            if (!message) return;
+
+            addMessage(message, true);
+            userInput.value = '';
+
+            showTypingIndicator();
+
+            // Simulate bot response - replace with actual API call
+            setTimeout(() => {
+                document.getElementById('typing-indicator').remove();
+                addMessage(`I received: "${message}". Connect to your backend API here.`, false);
+            }, 1000);
+        }
+
+        sendBtn.addEventListener('click', sendMessage);
+        userInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') sendMessage();
+        });
+    </script>
+    <script>
+        // Enhanced chatbot features
+        const conversationHistory = [];
+        const API_ENDPOINT = 'YOUR_API_ENDPOINT_HERE';
+
+        // Save conversation to localStorage
+        function saveConversation() {
+            localStorage.setItem('chatHistory', JSON.stringify(conversationHistory));
+        }
+
+        // Load conversation from localStorage
+        function loadConversation() {
+            const saved = localStorage.getItem('chatHistory');
+            if (saved) {
+                conversationHistory.push(...JSON.parse(saved));
+                conversationHistory.forEach(msg => {
+                    addMessage(msg.text, msg.isUser);
+                });
+            }
+        }
+
+        // Clear conversation
+        function clearChat() {
+            conversationHistory.length = 0;
+            messagesContainer.innerHTML = '<div class="message bot"><div class="message-content">Hello! 👋 I\'m your AI assistant. How can I help you today?</div></div>';
+            localStorage.removeItem('chatHistory');
+        }
+
+        // Enhanced sendMessage with history tracking and API integration
+        async function sendMessageEnhanced() {
+            const message = userInput.value.trim();
+            if (!message) return;
+
+            addMessage(message, true);
+            conversationHistory.push({ text: message, isUser: true });
+            userInput.value = '';
+            userInput.focus();
+
+            showTypingIndicator();
+
+            try {
+                // Replace with your actual API call
+                const response = await fetch(API_ENDPOINT, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message, history: conversationHistory })
+                }).catch(() => null);
+
+                document.getElementById('typing-indicator')?.remove();
+                
+                const botReply = response ? await response.json() : 
+                    { response: `I received: "${message}". Connect to your backend API.` };
+                
+                addMessage(botReply.response, false);
+                conversationHistory.push({ text: botReply.response, isUser: false });
+                saveConversation();
+            } catch (error) {
+                document.getElementById('typing-indicator')?.remove();
+                addMessage('Sorry, something went wrong.', false);
+            }
+        }
+
+        // Override original sendMessage
+        window.sendMessage = sendMessageEnhanced;
+        
+        // Load chat history on page load
+        window.addEventListener('load', loadConversation);
+
+        // Export conversation as JSON
+        function exportChat() {
+            const dataStr = JSON.stringify(conversationHistory, null, 2);
+            const dataBlob = new Blob([dataStr], { type: 'application/json' });
+            const url = URL.createObjectURL(dataBlob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `chat-${new Date().toISOString()}.json`;
+            link.click();
+        }
+    </script>
+    <script src="ai.js"></script>
+</body>
+</html>
