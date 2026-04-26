@@ -21,14 +21,14 @@ function gameFlash(btn){
     btn.classList.add("flash");
     setTimeout(function() {
         btn.classList.remove("flash");
-    },250);
+    },1000);
 }
 
 function userFlash(btn){
     btn.classList.add("userflash");
     setTimeout(function(){
         btn.classList.remove("userflash");
-    },250);
+    },1000);
 }
 
 function levelUp(){
@@ -58,7 +58,7 @@ function checkAns(idx){
         setTimeout(function(){
         document.querySelector("body").style.backgroundColor="white";
 
-        },150);
+        },1000);
         reset();
     }
 }
