@@ -9,7 +9,7 @@ function changecolor(color, delay) {
         }, delay);
     });
 }
-
+ 
 async function demo(){
     await changecolor('red', 1000);
     await changecolor('blue', 1000);
